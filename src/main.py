@@ -14,12 +14,13 @@ def playsound_async(path):
     playsound.playsound(path)
 
 def main():
-    argument_parser = argparse.ArgumentParser()
+    argument_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     argument_parser.add_argument(
         "-m",
         "--model",
         type=str,
-        required=True,
+        required=False,
+        default="../models/model.h5",
         help="The path to the h5 model.",
         metavar="path",
         dest="model_path"
@@ -28,7 +29,8 @@ def main():
         "-l",
         "--label",
         type=str,
-        required=True,
+        required=False,
+        default="../models/labels.txt",
         help="The path to the labels file.",
         metavar="path",
         dest="labels_path"
@@ -92,6 +94,7 @@ def main():
     if not os.path.exists("voices"):
         os.makedirs("voices")
     gtts.gTTS(minor_detected_speech_translated, lang=arguments.language).save(speech_location)
+    exposure = 128
     while True:
         _, frame = video_capture.read()
         processed_frame = cv2.flip(frame, 1)
