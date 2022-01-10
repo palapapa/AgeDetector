@@ -20,7 +20,7 @@ def main():
         "--model",
         type=str,
         required=False,
-        default="../models/model.h5",
+        default="models/model.h5",
         help="The path to the h5 model.",
         metavar="path",
         dest="model_path"
@@ -30,7 +30,7 @@ def main():
         "--label",
         type=str,
         required=False,
-        default="../models/labels.txt",
+        default="models/labels.txt",
         help="The path to the labels file.",
         metavar="path",
         dest="labels_path"
