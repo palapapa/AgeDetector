@@ -21,9 +21,9 @@ usage: main.py [-h] [-m path] [-l path] [-c id] [-s scale-factor] [-d ms] [--lan
 optional arguments:
   -h, --help            show this help message and exit
   -m path, --model path
-                        The path to the h5 model. (default: ../models/model.h5)
+                        The path to the h5 model. (default: models/model.h5)
   -l path, --label path
-                        The path to the labels file. (default: ../models/labels.txt)
+                        The path to the labels file. (default: models/labels.txt)
   -c id, --camera id    The number of the webcam to use. (default: 0)
   -s scale-factor, --scan-scaling scale-factor
                         The scaling factor to use while scanning faces. A smaller number means faster detection but
