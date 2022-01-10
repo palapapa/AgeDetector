@@ -16,7 +16,7 @@ py src/main.py
 ### Options
 
 ```text
-usage: main.py [-h] [-m path] [-l path] [-c id] [-s scale-factor] [-d ms] [--language ISO-code]
+usage: main.py [-h] [-m path] [-l path] [-c id] [-s scaling-factor] [-d ms] [--language ISO-code]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -25,7 +25,7 @@ optional arguments:
   -l path, --label path
                         The path to the labels file. (default: models/labels.txt)
   -c id, --camera id    The number of the webcam to use. (default: 0)
-  -s scale-factor, --scan-scaling scale-factor
+  -s scaling-factor, --scan-scaling scaling-factor
                         The scaling factor to use while scanning faces. A smaller number means faster detection but
                         lower accuracy and vice versa. (default: 0.25)
   -d ms, --scan-delay ms

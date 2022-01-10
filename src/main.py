@@ -52,7 +52,7 @@ def main():
         required=False,
         default=0.25,
         help="The scaling factor to use while scanning faces. A smaller number means faster detection but lower accuracy and vice versa.",
-        metavar="scale-factor",
+        metavar="scaling-factor",
         dest="scaling_factor"
     )
     argument_parser.add_argument(
