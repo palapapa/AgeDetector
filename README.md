@@ -32,3 +32,9 @@ optional arguments:
                         The amount of time to delay between each scan. (default: 0)
   --language ISO-code   The language of the warning voice. (default: en)
 ```
+
+## Controls
+
+- Esc: Quit the application.
+- B: Brighten the image.
+- D: Darken the image.

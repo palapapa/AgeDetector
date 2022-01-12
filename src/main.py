@@ -13,6 +13,23 @@ import threading
 def playsound_async(path):
     playsound.playsound(path)
 
+def increase_brightness(image, brightness):
+    if brightness == 0:
+        return image
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    h, s, v = cv2.split(hsv)
+    if brightness > 0:
+        limit = 255 - brightness
+        v[v > limit] = 255
+        v[v <= limit] += numpy.uint8(brightness)
+    elif brightness < 0:
+        limit = 0 - brightness
+        v[v < limit] = 0
+        v[v >= limit] += numpy.uint8(brightness)
+    final_hsv = cv2.merge((h, s, v))
+    img = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2BGR)
+    return img
+
 def main():
     argument_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     argument_parser.add_argument(
@@ -94,7 +111,7 @@ def main():
     if not os.path.exists("voices"):
         os.makedirs("voices")
     gtts.gTTS(minor_detected_speech_translated, lang=arguments.language).save(speech_location)
-    exposure = 128
+    brightness_delta = 0
     while True:
         _, frame = video_capture.read()
         processed_frame = cv2.flip(frame, 1)
@@ -118,10 +135,16 @@ def main():
                 time_of_last_minor_detection = time.monotonic()
             processed_frame = cv2.rectangle(processed_frame, (x1, y1 - 25), (x2, y1), (0, 255, 0), cv2.FILLED)
             processed_frame = cv2.putText(processed_frame, prediction, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 1)
+        processed_frame = increase_brightness(processed_frame, brightness_delta)
         cv2.imshow("Age Detector(Esc to quit)", processed_frame)
-        if cv2.waitKey(1) == 27: # esc key
+        key = cv2.waitKey(1)
+        if key == 27: # esc key
             cv2.destroyAllWindows()
             break
+        if key == 66 or key == 98: # b key
+            brightness_delta += 1
+        if key == 68 or key == 100: # d key
+            brightness_delta -= 1
 
 if __name__ == "__main__":
     main()
