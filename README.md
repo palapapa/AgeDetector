@@ -4,6 +4,7 @@ This is a simple age detector made with Teachable Machine. It scans faces using 
 
 ## Usage
 
+Please use Python 3.9.6 or things might not work.
 ```powershell
 git clone https://github.com/palapapa/AgeDetector
 cd AgeDetector
