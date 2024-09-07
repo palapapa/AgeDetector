@@ -2,6 +2,8 @@
 
 This is a simple age detector made with Teachable Machine. It scans faces using a webcam and identifies whether a person is an adult or a minor and puts a bounding box around their faces that shows this information.
 
+To understand the making of this project and its usage, please refer to [this PDF](AgeDetector.pdf) and [this presentation](https://youtu.be/JpLVShrX2dM).
+
 ## Usage
 
 Please use Python 3.9.6 or things might not work.
